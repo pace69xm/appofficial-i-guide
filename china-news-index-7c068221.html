@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>世界杯简明指南 · 2026中国区资讯</title>
+  <style>
+    /* reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f9fb;
+      color: #1d2b36;
+      line-height: 1.6;
+      padding: 20px 16px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 主视觉区 – 简洁信息标题 */
+    .hero {
+      background: linear-gradient(145deg, #0f2c3a 0%, #1b4b5c 100%);
+      padding: 36px 28px 40px;
+      border-radius: 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 12px 24px -8px rgba(0,40,50,0.18);
+      color: #e5f4f7;
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: #2dab9a;
+      color: #0c1e26;
+      padding: 0 10px 2px 10px;
+      border-radius: 30px;
+      font-size: 0.9em;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 640px;
+      opacity: 0.9;
+      margin-top: 8px;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(45, 171, 154, 0.2);
+      border: 1px solid #2dab9a;
+      border-radius: 40px;
+      padding: 4px 16px;
+      font-size: 0.8rem;
+      color: #b9e4df;
+      margin-top: 16px;
+    }
+
+    /* 卡片网格 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 30px 0 36px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 18px -6px rgba(0,32,42,0.08);
+      border: 1px solid #d9e6eb;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      border-color: #2dab9a;
+      box-shadow: 0 12px 24px -10px rgba(0,80,70,0.12);
+    }
+
+    .card .icon-placeholder {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #2dab9a;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0f2c3a;
+      margin: 8px 0 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #2c4654;
+      margin-bottom: 6px;
+    }
+
+    .card .tag {
+      background: #e3f1f5;
+      color: #0f3844;
+      border-radius: 30px;
+      padding: 2px 12px;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* 自然链接段落 (蓝绿色点缀) */
+    .link-block {
+      background: #eaf5f7;
+      border-radius: 28px;
+      padding: 28px 24px;
+      margin: 28px 0 32px;
+      border-left: 6px solid #2dab9a;
+    }
+
+    .link-block p {
+      font-size: 1rem;
+      max-width: 780px;
+      color: #1b3843;
+    }
+
+    .link-block a {
+      color: #0a6d5f;
+      background: transparent;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: #2dab9a;
+      font-weight: 600;
+      transition: background 0.1s, color 0.2s;
+      padding: 0 2px;
+    }
+
+    .link-block a:hover {
+      background: #2dab9a;
+      color: #0c1f27;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    /* 人群 / 场景摘要 */
+    .audience {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+
+    .audience-item {
+      background: white;
+      border-radius: 40px;
+      padding: 10px 18px 10px 18px;
+      border: 1px solid #c6dce3;
+      color: #1b3f4d;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audience-item::before {
+      content: "✓";
+      background: #2dab9a;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* 提示/FAQ 摘要 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px 20px 16px;
+      margin: 28px 0 16px;
+      border: 1px solid #d2e3e8;
+    }
+
+    .faq-mini h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f2c3a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-mini h4::before {
+      content: "⏺";
+      color: #2dab9a;
+      font-size: 1.2rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #e5edf1;
+      padding-bottom: 10px;
+    }
+
+    .faq-mini details:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #1b3a48;
+      padding: 4px 0;
+    }
+
+    .faq-mini .answer {
+      font-size: 0.85rem;
+      color: #2b4b5a;
+      margin-top: 6px;
+      padding-left: 4px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      border-top: 1px solid #d2e3e8;
+      padding-top: 24px;
+      font-size: 0.82rem;
+      color: #3c5c68;
+      text-align: center;
+    }
+
+    .footer-note a {
+      color: #0a6d5f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 主视觉 -->
+  <div class="hero">
+    <h1><span>⚽</span> 简明指南 · 世界杯</h1>
+    <p>2026 年世界杯已进入倒计时周期，赛事日程、城市分区、资格赛路径与观赛准备同步更新。本页汇总关键信息层，方便快速浏览。</p>
+    <span class="badge">焦点 · 中国区动态</span>
+  </div>
+
+  <!-- 用途卡片 / 信息卡片式 三列网格 -->
+  <div class="grid">
+    <div class="card">
+      <span class="icon-placeholder">🗓️</span>
+      <h3>赛程与分组</h3>
+      <p>48 支球队，16 个主办城市，小组阶段至决赛时间线已基本锁定。关注种子队分档及抽签窗口。</p>
+      <span class="tag">2026.6–7</span>
+    </div>
+    <div class="card">
+      <span class="icon-placeholder">🏟️</span>
+      <h3>场馆与通行</h3>
+      <p>北美三地联办，体育场容量、交通接驳、球迷区规划逐步公布。跨城行程建议提前 6 个月评估。</p>
+      <span class="tag">美国·加拿大·墨西哥</span>
+    </div>
+    <div class="card">
+      <span class="icon-placeholder">📋</span>
+      <h3>资格与签证</h3>
+      <p>亚洲区预选赛进行中；中国国家队目前处于第三阶段。持票球迷需关注 ESTA / 签证政策更新。</p>
+      <span class="tag">资格赛实时</span>
+    </div>
+  </div>
+
+  <!-- 自然链接段落：嵌入“世界杯” -->
+  <div class="link-block">
+    <p>如果您希望获取更完整的赛事架构、历史数据比对以及各队晋级概率分析，可直接查阅 <a href="https://china-news-fifa2026.com">世界杯</a> 专属频道。该站点每日整合官方公告与媒体信源，提供中立、结构化的信息集合，适合深度阅读与行程参考。</p>
+  </div>
+
+  <!-- 适合人群（简洁标签式） -->
+  <h4 style="font-weight:600; font-size:1rem; color:#0f2c3a; margin-bottom:10px;">‌‌适用读者</h4>
+  <div class="audience">
+    <span class="audience-item">计划现场观赛的球迷</span>
+    <span class="audience-item">赛事数据分析爱好者</span>
+    <span class="audience-item">媒体与内容研究者</span>
+    <span class="audience-item">差旅与赛事组织相关从业者</span>
+    <span class="audience-item">国家队支持者</span>
+  </div>
+
+  <!-- FAQ 摘要（提醒 + 要点） -->
+  <div class="faq-mini">
+    <h4>访问提醒与常见疑问</h4>
+    <details>
+      <summary>页面信息更新频率？</summary>
+      <div class="answer">赛事关键节点（抽签、名单、赛程变更）会实时同步；日常每隔 48 小时复核主流信源。</div>
+    </details>
+    <details>
+      <summary>是否需要注册或付费？</summary>
+      <div class="answer">完全免费，无需注册。所有内容均开放阅读，部分外部链接导向官方组织或授权媒体。</div>
+    </details>
+    <details>
+      <summary>移动端适配如何？</summary>
+      <div class="answer">卡片网格及导航均采用响应式设计，在手机、平板与桌面均可流畅查看。建议横向旋转以浏览赛程表。</div>
+    </details>
+    <details>
+      <summary>如何获得更详细的中国队赛程？</summary>
+      <div class="answer">可返回 <a href="https://china-news-fifa2026.com" style="color:#0a6d5f; text-decoration:underline; text-underline-offset:3px; font-weight:500;">世界杯</a> 首页，进入「预选赛跟踪」分区，那里包含每轮对阵与积分形势。</div>
+    </details>
+  </div>
+
+  <!-- 底部辅助链接（自然） -->
+  <div class="footer-note">
+    信息仅供参考，最终以官方发布为准。更多内容请浏览 <a href="https://china-news-fifa2026.com">世界杯</a> 主站。
+  </div>
+</div>
+</body>
+</html>
